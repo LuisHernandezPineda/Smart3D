@@ -1,0 +1,75 @@
+.footer {
+    background-color: #0052cc;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Sección genérica para cada parte del footer */
+.footer-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Primera sección: Logo */
+.footer-logo {
+    width: 130px;
+}
+
+/* Segunda sección: Redes Sociales */
+.social-section {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.social-section p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Iconos de redes sociales con fondo blanco */
+.social-icon {
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* Tercera sección: Botón Inscribirme */
+.inscription-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    transition: background 0.3s;
+}
+
+.inscription-button:hover {
+    background-color: #218838;
+}
+
+/* Cuarta sección: Imagen del robot */
+.robot-image {
+    width: 140px;
+}
