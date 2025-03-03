@@ -1,0 +1,103 @@
+/* Eliminar margen y desbordamiento global */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita la barra de desplazamiento horizontal */
+  }
+  .inicio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+/* Sección de información */
+.info-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Ocupar todo el ancho */
+    height: 100%; /* Ocupar toda la pantalla */
+    background: white;
+    padding: 20px 0;
+  }
+
+  /* Contenedor del contenido */
+.info-content {
+    width: 50%;
+    text-align: left;
+    padding: 20px;
+  }
+  
+  
+  /* Imagen */
+.info-image {
+    width: 30%; /* Reduce el tamaño de la imagen */
+    display: flex;
+    justify-content: center;
+  }
+  
+  .info-image img {
+    width: 100%;
+    max-width: 350px; /* Ajustar tamaño máximo */
+    border-radius: 10px;
+  }
+  
+  .info-content p {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  
+  .info-content h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .info-content p {
+    font-size: 16px;
+    color: #333;
+  }
+  
+/* Contenedor de los botones */
+.buttons {
+  display: flex;
+  justify-content: center; /* Centrar los botones */
+  gap: 100px;
+  margin-top: 20px;
+}
+
+/* Botón de "Más información" */
+.btn-info {
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px; /* Aumenta la curva */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn-info:hover {
+  background-color: #003d82;
+}
+
+/* Botón de "Inscribirse" */
+.btn-inscribirse {
+  background-color: #00c853;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px; /* Aumenta la curva */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn-inscribirse:hover {
+  background-color: #009b3e;
+}

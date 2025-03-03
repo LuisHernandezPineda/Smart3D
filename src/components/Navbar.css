@@ -1,0 +1,80 @@
+/* NAVBAR FIJO ARRIBA */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #0056b3;
+    display: flex;
+    align-items: center;
+    padding: 10px 40px;
+    z-index: 1000;
+  }
+  
+  /* CONTENEDOR DEL LOGO */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* ESTILOS DEL LOGO */
+  .logo {
+    height: 40px; /* Ajusta el tamaño del logo */
+    width: auto; /* Mantiene la proporción */
+  }
+  
+  /* TEXTO "SMART 3D" */
+  .logo-text {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+/* CONTENEDOR DEL MENÚ Y BOTÓN */
+.nav-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-end;
+    gap: 15px; /* Reducimos un poco la separación */
+    margin-right: 60px; /* Movemos todo un poco más a la izquierda */
+  }
+  
+  /* MENÚ DE NAVEGACIÓN */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Ajustamos el espacio entre los elementos del menú */
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* ESTILOS DE LOS ENLACES */
+  .nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-links li a:hover {
+    color: #a3d5ff;
+  }
+  
+  /* BOTÓN "FAMILIA SMART" */
+  .btn-familia {
+    background: #00c853;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  
+  .btn-familia:hover {
+    background: #00a846;
+  }
+  

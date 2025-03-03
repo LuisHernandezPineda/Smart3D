@@ -1,0 +1,68 @@
+/* Evitar desbordamientos */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Contenedor principal */
+.momentos-section {
+  overflow: hidden;
+  background-color: #c9dff7;  /* Azul claro */
+  max-width: 100%;
+  padding: 30px 20px;
+  text-align: center;
+
+}
+
+/* Contenedor de imágenes con desplazamiento infinito */
+.scroll-stack {
+  display: flex;
+  overflow-x: hidden;
+  gap: 1rem;
+  padding: 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  max-width: 100vw;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+
+/* Ocultar scrollbar */
+.scroll-stack::-webkit-scrollbar {
+  display: none;
+}
+
+/* Estilo de cada imagen */
+.momento-item {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 280px;
+  border-radius: 15px;
+  box-shadow: 4px 4px 10px rgba(174, 198, 201, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/* Imagen dentro de la tarjeta */
+.momento-item figure {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.momento-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Estilo del título "Momentos Smart 3D" */
+.momentos-section h2 {
+  color: black;  /* Cambiar a negro */
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
