@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Karma:wght@300;400;700&display=swap");
+
+.nosotros {
+    font-family: "Karma", serif;
+    background: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    width: 100vw; /* Ocupar todo el ancho de la pantalla */
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Encabezado */
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 90%; /* Permitir que el contenido use más espacio */
+    max-width: 1400px; /* Ajustar el límite de ancho */
+    margin-bottom: 1rem;
+}
+
+.heading h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    max-width: 45%; /* Asegurar que el título no sea demasiado grande */
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.heading aside {
+    max-width: 50%;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Contenedor de imágenes */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem; /* Espaciado mayor entre imágenes */
+    align-items: flex-end;
+    width: 85%;
+    max-width: 1200px; /* Permitir mayor expansión */
+    margin-top: -0.5rem;
+}
+
+/* Tarjetas de imágenes */
+.card {
+    background: transparent;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; /* Permitir que cada tarjeta crezca */
+    width: 33%; /* Hacer que cada tarjeta use 1/3 del espacio */
+}
+
+/* Imágenes */
+.imgBox {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 15px;
+    position: relative;
+    height: 360px; /* Ajustar altura */
+}
+
+/* Ajustar todas las imágenes */
+.imgBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* Botón #SMART3D alineado correctamente */
+.tag {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: #14a44d;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: "Karma", serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
