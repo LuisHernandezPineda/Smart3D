@@ -5,18 +5,24 @@ import Nosotros from "./pages/Nosotros";
 import Proyectos from "./pages/Proyectos";
 import Talleres from "./pages/Talleres";
 import FamiliaSmart from "./pages/FamiliaSmart";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/nosotros" element={<Nosotros />} />
-        <Route path="/proyectos" element={<Proyectos />} />
-        <Route path="/talleres" element={<Talleres />} />
-        <Route path="/familia-smart" element={<FamiliaSmart />} />
-      </Routes>
+      <div className="app-container">
+        <Navbar />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Inicio />} />
+            <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/proyectos" element={<Proyectos />} />
+            <Route path="/talleres" element={<Talleres />} />
+            <Route path="/familia-smart" element={<FamiliaSmart />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </Router>
   );
 };
