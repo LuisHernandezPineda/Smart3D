@@ -41,8 +41,45 @@ const Nosotros = () => {
           <div className="tag">#SMART3D</div>
         </div>
       </div>
+
+      <section className="impulsa-section">
+      <div className="impulsa-section__image">
+        <img src="public\img\7746760.JPG" alt="Robot 1" />
+      </div>
+      <div className="impulsa-section__content">
+        <h2>¿Qué nos impulsa?</h2>
+        <p>
+          Nuestra misión es inspirar y educar a través de la tecnología,
+          promoviendo el desarrollo de habilidades prácticas y creativas 
+          en diseño 3D, robótica y programación. Queremos empoderar a las 
+          personas para que enfrenten los desafíos del futuro con innovación, 
+          confianza y adaptabilidad.
+        </p>
+      </div>
+    </section>
+
+
+
+    {/* Sección 2: ¿Hacia dónde vamos? */}
+    <section className="impulsa-section">
+        
+        <div className="impulsa-section__content">
+          <h2>¿Hacia dónde vamos?</h2>
+          <p>
+            Nuestra visión es ser un referente en educación tecnológica, 
+            liderando el desarrollo de habilidades innovadoras y prácticas 
+            que impulsen el crecimiento personal y profesional en un mundo 
+            cada vez más digital. Aspiramos a transformar ideas en realidades, 
+            inspirando creatividad y adaptabilidad en cada paso.
+          </p>
+        </div>
+        <div className="impulsa-section__image">
+          <img src="public\img\427pIkbEsT5Ij.png" alt="Robot 2" />
+        </div>
+      </section>
     </main>
   );
 };
 
 export default Nosotros;
+

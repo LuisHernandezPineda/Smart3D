@@ -167,3 +167,71 @@
         /* Ajustar a un tamaño más reducido */
     }
 }
+
+
+.impulsa-section {
+    
+    display: flex;
+    /* Para dividir en columnas */
+    align-items: center;
+    /* Centra verticalmente el contenido */
+    justify-content: center;
+    /* Centra horizontalmente si sobra espacio */
+    background-color: #DFFDEE;
+    /* Color de fondo (puedes cambiarlo) */
+    padding: 0rem;
+    /* Espacio interno */
+    margin: 2rem auto;
+    /* Separación externa, auto para centrar */
+    max-width: 100%;
+    /* Ancho máximo para evitar que crezca demasiado */
+    border-radius: 10px;
+    /* Bordes redondeados (opcional) */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave (opcional) */
+}
+
+.impulsa-section__image,
+.impulsa-section__content {
+    width: 50%;
+    /* Cada columna ocupa la mitad */
+    box-sizing: border-box;
+    /* Incluye padding/margin en el cálculo del ancho */
+    padding: 3rem;
+}
+
+.impulsa-section__image img {
+    width: 50%;
+    height: auto;
+    object-fit: contain;
+    
+}
+
+.impulsa-section__content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.impulsa-section__content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Responsividad: Pantallas pequeñas */
+@media (max-width: 768px) {
+    .impulsa-section {
+        flex-direction: column;
+
+    }
+
+    .impulsa-section__image,
+    .impulsa-section__content {
+        width: 100%;
+    }
+}
+
+.impulsa-section {
+    width: 90%;
+    max-width: 100%; 
+    margin: 2rem auto;
+}
