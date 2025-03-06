@@ -9,8 +9,8 @@
     align-items: center;
     text-align: center;
     padding: 4rem 2rem;
-    width: 100vw; /* Ocupar todo el ancho de la pantalla */
-    max-width: 1300px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -19,15 +19,15 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    width: 90%; /* Permitir que el contenido use más espacio */
-    max-width: 1400px; /* Ajustar el límite de ancho */
+    width: 100%;
+    max-width: 90%;
     margin-bottom: 1rem;
 }
 
 .heading h1 {
     font-size: 3rem;
     font-weight: 700;
-    max-width: 45%; /* Asegurar que el título no sea demasiado grande */
+    max-width: 45%;
     text-align: left;
     margin-bottom: 0.5rem;
 }
@@ -43,10 +43,10 @@
 .container {
     display: flex;
     justify-content: center;
-    gap: 2.5rem; /* Espaciado mayor entre imágenes */
+    gap: 2.5rem;
     align-items: flex-end;
     width: 85%;
-    max-width: 1200px; /* Permitir mayor expansión */
+    max-width: 1200px;
     margin-top: -0.5rem;
 }
 
@@ -59,8 +59,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-grow: 1; /* Permitir que cada tarjeta crezca */
-    width: 33%; /* Hacer que cada tarjeta use 1/3 del espacio */
+    flex-grow: 1;
+    width: 33%;
 }
 
 /* Imágenes */
@@ -73,10 +73,9 @@
     overflow: hidden;
     border-radius: 15px;
     position: relative;
-    height: 360px; /* Ajustar altura */
+    height: 360px;
 }
 
-/* Ajustar todas las imágenes */
 .imgBox img {
     width: 100%;
     height: 100%;
@@ -84,7 +83,7 @@
     border-radius: 15px;
 }
 
-/* Botón #SMART3D alineado correctamente */
+/* Botón #SMART3D */
 .tag {
     position: absolute;
     bottom: 10px;
@@ -99,4 +98,72 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* ========================= */
+/*   Media Queries           */
+/* ========================= */
+
+/* Pantallas medianas (tablets, ~768px) */
+@media (max-width: 768px) {
+    .heading {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .heading h1 {
+        font-size: 2.5rem;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .heading aside {
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+
+    .container {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .card {
+        width: calc(50% - 1.5rem);
+        /* Dos tarjetas por fila */
+    }
+
+    .imgBox {
+        height: auto;
+        /* Deja que el alto se ajuste */
+        aspect-ratio: 4 / 5;
+        /* Mantiene proporción aproximada */
+    }
+}
+
+/* Pantallas pequeñas (móviles, ~480px) */
+@media (max-width: 480px) {
+    .nosotros {
+        padding: 2rem 1rem;
+    }
+
+    .heading h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        gap: 1rem;
+    }
+
+    .card {
+        width: 100%;
+        /* Una tarjeta por fila */
+    }
+
+    .imgBox {
+        aspect-ratio: auto;
+        /* Permitir que la imagen se ajuste libremente */
+        height: 280px;
+        /* Ajustar a un tamaño más reducido */
+    }
 }
