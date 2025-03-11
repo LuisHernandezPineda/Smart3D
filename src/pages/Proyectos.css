@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Karma:wght@400;700&display=swap');
+
+.proyectos-container {
+    position: relative;
+    top: 0;
+    width: 100vw;
+    height: 310px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.proyectos-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(8px);
+    z-index: 0;
+}
+
+.proyectos-titulo {
+    position: relative;
+    font-size: 2rem;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 1px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    z-index: 1;
+    padding: 10px;
+    text-align: center;
+    max-width: 90%;
+    margin: 0;
+}
+
+.seccion-proyectos {
+    background-color: #D7E3FC;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.proyectos-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+    max-width: 900px;
+}
+
+.proyectos-video video {
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    border: none;
+}
+
+.proyectos-texto {
+    max-width: 400px;
+    color: #333;
+    font-size: 1 rem;
+    line-height: 1.4;
+    text-align: justify;
+    font-family: 'Karma', serif;
+}
+
+
+
+@media (max-width: 1024px) {
+    .proyectos-container {
+        height: 220px;
+        background-size: cover;
+    }
+    .seccion-proyectos {
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 768px) {
+    .proyectos-container {
+        height: 180px;
+        background-size: cover;
+    }
+    .proyectos-titulo {
+        font-size: 1.5rem;
+    }
+    .proyectos-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .proyectos-video video {
+        width: 90%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .proyectos-container {
+        height: 150px;
+        background-size: cover;
+    }
+    .proyectos-titulo {
+        font-size: 1.2rem;
+    }
+}
