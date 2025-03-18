@@ -5,6 +5,7 @@ import Nosotros from "./pages/Nosotros";
 import Proyectos from "./pages/Proyectos";
 import Talleres from "./pages/Talleres";
 import FamiliaSmart from "./pages/FamiliaSmart";
+import Inscripcion from "./pages/Inscripcion";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/proyectos" element={<Proyectos />} />
             <Route path="/talleres" element={<Talleres />} />
             <Route path="/familia-smart" element={<FamiliaSmart />} />
+            <Route path="/inscripcion" element={<Inscripcion />} />
           </Routes>
         </div>
         <Footer />

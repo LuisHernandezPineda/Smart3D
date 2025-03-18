@@ -44,7 +44,7 @@ const Nosotros = () => {
 
       <section className="impulsa-section">
       <div className="impulsa-section__image">
-        <img src="public\img\7746760.JPG" alt="Robot 1" />
+        <img src="\img\7746760.JPG" alt="Robot 1" />
       </div>
       <div className="impulsa-section__content">
         <h2>¿Qué nos impulsa?</h2>
@@ -74,7 +74,7 @@ const Nosotros = () => {
           </p>
         </div>
         <div className="impulsa-section__image">
-          <img src="public\img\427pIkbEsT5Ij.png" alt="Robot 2" />
+          <img src="\img\427pIkbEsT5Ij.png" alt="Robot 2" />
         </div>
       </section>
     </main>
