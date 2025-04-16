@@ -77,7 +77,7 @@ const Inscripcion = () => {
         </form>
       </div>
       <div className="inscripcion-imagen">
-        <img src="/img/logo.png" alt="Logo" />
+        <img src="/img/logo.jpg" alt="Logo" />
       </div>
     </div>
   );

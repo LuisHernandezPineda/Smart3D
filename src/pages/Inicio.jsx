@@ -1,10 +1,12 @@
 import Carousel from "../components/Carousel";
 import Momentos from "../components/Momentos";
 import Testimonios from "../components/Testimonios";
+
 import "./Inicio.css";
 
 const Inicio = () => {
   return (
+    
     <div className="inicio-container">
       {/* Carrusel */}
       <Carousel />

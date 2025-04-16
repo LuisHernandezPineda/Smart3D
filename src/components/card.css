@@ -1,0 +1,128 @@
+/* card.css */
+:root {
+  --surface-color: #fff;
+  --curve: 20;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin: 4rem 5vw;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  height: 300px;
+  border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
+  background-color: var(--surface-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  padding: 1em;
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(15%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 40%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #000;
+}
+
+.card:first-child .card__overlay {
+  background-color: var(--primary-overlay);
+  color: #000;
+}
+
+.card:nth-child(2) .card__overlay {
+  background-color: var(--white-overlay);
+  color: #000;
+}
+
+.card:nth-child(3) .card__overlay {
+  background-color: var(--green-overlay);
+  color: #000;
+}
+
+.card:hover .card__overlay {
+  transform: translateY(0);
+}
+
+.card__header {
+  display: flex;
+  align-items:center ;
+  gap: 1em;
+  margin-bottom: 0.5em;
+  padding-left: 0.3em;
+}
+
+.card__thumb {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.card__title {
+  font-size: 1rem;
+  margin: 0;
+  color: #000;
+}
+
+.card__status {
+  font-size: 0.8rem;
+  color: #000;
+}
+
+.card__description {
+  font-size: 0.9rem;
+  color: #000;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding-left: 0.3em;
+}
+
+.card__arc {
+  display: none;
+}

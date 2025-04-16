@@ -25,7 +25,7 @@ const Talleres = () => {
             <h2>Robo Kids</h2>
             <p>Un taller para niños de 1ro a 2do de primaria, donde crean proyectos como Otto Bailarín y Otto Car, aprendiendo robótica de forma divertida y práctica. 🚀🤖</p>
             <div className="talleres-buttons">
-              <button className="btn-info" onClick={() => navigate('/robo-kids')}>Más información</button>
+              <button className="btn-info" onClick={() => navigate('/robokids')}>Más información</button>
               <button className="btn-register" onClick={() => navigate('/inscripcion')}>Inscribirse</button>
             </div>
           </div>
@@ -36,15 +36,15 @@ const Talleres = () => {
       <div className="talleres-info-wrapper">
         <div className="talleres-info-container robo-juniors">
           <img 
-            src="/img/momento3.jpeg" 
-            alt="Niña con robot" 
+            src="/img/taller2.jpg" 
+            alt="Niño con robot" 
             className="talleres-image"
           />
           <div className="talleres-info">
             <h2>Robo Juniors</h2>
             <p>Dirigido a niños de 3ro a 7mo de primaria, este taller les permite crear proyectos como Otto Ninja y Otto Araña, aprendiendo robótica y tecnología de forma creativa y emocionante. 🚀🤖</p>
             <div className="talleres-buttons">
-              <button className="btn-info" onClick={() => navigate('/robo-juniors')}>Más información</button>
+              <button className="btn-info" onClick={() => navigate('/robojuniors')}>Más información</button>
               <button className="btn-register" onClick={() => navigate('/inscripcion')}>Inscribirse</button>
             </div>
           </div>

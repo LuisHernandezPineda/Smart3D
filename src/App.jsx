@@ -7,8 +7,14 @@ import Talleres from "./pages/Talleres";
 import FamiliaSmart from "./pages/FamiliaSmart";
 import Inscripcion from "./pages/Inscripcion";
 import Footer from "./components/Footer";
+import RoboKids from "./components/taller";
+import RoboKidsPage from './pages/RoboKids';
+import RoboJuniorsPage from './pages/RoboJuniors';
 
-const App = () => {
+
+
+
+function App() {
   return (
     <Router>
       <div className="app-container">
@@ -19,6 +25,8 @@ const App = () => {
             <Route path="/nosotros" element={<Nosotros />} />
             <Route path="/proyectos" element={<Proyectos />} />
             <Route path="/talleres" element={<Talleres />} />
+            <Route path="/robokids" element={<RoboKidsPage />} />
+            <Route path="/robojuniors" element={<RoboJuniorsPage />} />
             <Route path="/familia-smart" element={<FamiliaSmart />} />
             <Route path="/inscripcion" element={<Inscripcion />} />
           </Routes>
@@ -27,6 +35,6 @@ const App = () => {
       </div>
     </Router>
   );
-};
+}
 
 export default App;

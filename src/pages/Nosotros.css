@@ -17,6 +17,7 @@
 /* Encabezado */
 .heading {
     display: flex;
+    padding: 3rem;
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
