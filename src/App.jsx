@@ -5,7 +5,6 @@ import Nosotros from "./pages/Nosotros";
 import Proyectos from "./pages/Proyectos";
 import Talleres from "./pages/Talleres";
 import FamiliaSmart from "./pages/FamiliaSmart";
-import Inscripcion from "./pages/Inscripcion";
 import Footer from "./components/Footer";
 import RoboKids from "./components/taller";
 import RoboKidsPage from './pages/RoboKids';
@@ -28,7 +27,6 @@ function App() {
             <Route path="/robokids" element={<RoboKidsPage />} />
             <Route path="/robojuniors" element={<RoboJuniorsPage />} />
             <Route path="/familia-smart" element={<FamiliaSmart />} />
-            <Route path="/inscripcion" element={<Inscripcion />} />
           </Routes>
         </div>
         <Footer />
