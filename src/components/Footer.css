@@ -1,15 +1,16 @@
 .footer {
+    width: 100vw; /* Asegura el ancho completo de la ventana */
     position: relative;
+    left: 0;
+    bottom: 0;
     background-color: #0052cc;
     color: white;
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: center; 
-    left: 0;
-    width: 100%;
-    
+    align-items: center;
 }
+
 
 .footer-container {
     display: flex;
