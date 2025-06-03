@@ -10,6 +10,8 @@ import Footer from "./components/Footer";
 import RoboKids from "./components/taller";
 import RoboKidsPage from './pages/RoboKids';
 import RoboJuniorsPage from './pages/RoboJuniors';
+import Login from "./pages/Login";
+
 
 
 
@@ -25,10 +27,12 @@ function App() {
             <Route path="/nosotros" element={<Nosotros />} />
             <Route path="/proyectos" element={<Proyectos />} />
             <Route path="/talleres" element={<Talleres />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/robokids" element={<RoboKidsPage />} />
             <Route path="/robojuniors" element={<RoboJuniorsPage />} />
             <Route path="/familia-smart" element={<FamiliaSmart />} />
             <Route path="/inscripcion" element={<Inscripcion />} />
+            
           </Routes>
         </div>
         <Footer />
