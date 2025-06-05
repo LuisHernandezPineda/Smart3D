@@ -1,0 +1,61 @@
+/* Contenedor general */
+.campus-container {
+  padding: 100px 2rem 2rem; /* espacio para el header fijo */
+  background-color: #f4f6f8;
+  min-height: 100vh;
+}
+
+/* Tarjetas de navegación */
+.campus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.campus-card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.campus-card:hover {
+  transform: scale(1.02);
+}
+
+.campus-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+/* Información de la tarjeta (ícono + texto) */
+.card-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 1rem;
+}
+
+/* Ícono redondo */
+.card-icon-wrapper {
+  width: 42px;
+  height: 42px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.card-icon {
+  max-width: 70%;
+  max-height: 70%;
+  object-fit: contain;
+  border-radius: 50%;
+}

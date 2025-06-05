@@ -23,7 +23,7 @@ const Login = () => {
                 alert('Inicio de sesión exitoso');
                 localStorage.setItem('userEmail', email);
                 form.reset();
-                navigate('/aprendizaje-individual');
+                navigate('/campus'); // Redirige al campus después de iniciar sesión
             } else {
                 alert('Credenciales incorrectas');
             }

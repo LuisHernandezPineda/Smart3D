@@ -19,7 +19,7 @@ const Nosotros = () => {
       </div>
 
       {/* Contenedor de imágenes */}
-      <div className="container">
+      <div className="nosotros-gallery">
         <div className="card">
           <div className="imgBox">
             <img src="/img/momento1.jpeg" alt="Niño con proyecto de robótica" />
