@@ -30,7 +30,7 @@ function AppWrapper() {
     "/ajustes",
     "/admintaller",
     "/sedes",
-    "/proyecto"
+    "/detalle-proyecto",
   ];
 
   // Verifica si la ruta actual es una ruta admin
@@ -58,7 +58,7 @@ function AppWrapper() {
           <Route path="/docentes" element={<Docentes />} />
           <Route path="/sedes" element={<Sedes />} />
           <Route path="/sedes/:nombre" element={<SedeDetalle />} />
-          <Route path="/proyecto/:nombre" element={<ProyectoDetalle />} />
+          <Route path="/detalle-proyecto/:nombre" element={<ProyectoDetalle />} />
        
         </Routes>
       </div>

@@ -49,7 +49,7 @@ const SedeDetalle = () => {
             <li key={idx} className="proyecto-item">
               <span>{proy.nombre}</span>
               {/* ✅ Redirección al hacer clic */}
-              <button className="btn-ver" onClick={() => navigate(`/proyecto/${proy.nombre}`)}>
+              <button className="btn-ver" onClick={() => navigate(`/detalle-proyecto/${proy.nombre}`)}>
                 Ver
               </button>
             </li>
