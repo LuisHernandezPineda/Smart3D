@@ -67,7 +67,7 @@
   top: -69px;
   left: -32px;
   width: 100vw;
-  height: 130px;
+  height: 180px;
   overflow: hidden;
   z-index: 1;
 }
@@ -89,7 +89,7 @@
 
 .inscripciones-banner-content {
   position: relative;
-  height: 100%;
+  height: 125%;
   display: flex;
   justify-content: center;
   align-items: center;

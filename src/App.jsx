@@ -12,6 +12,11 @@ import RoboJuniorsPage from './pages/RoboJuniors';
 import Login from "./pages/Login";
 import Campus from "./pages/Campus";
 import Inscripciones from "./pages/Inscripciones";
+import AdminTaller from "./pages/AdminTaller";
+import Docentes from "./pages/Docentes";
+import Sedes from "./pages/Sedes";
+import SedeDetalle from "./pages/SedeDetalle";
+import ProyectoDetalle from "./pages/ProyectoDetalle";
 
 function AppWrapper() {
   const location = useLocation();
@@ -24,7 +29,8 @@ function AppWrapper() {
     "/reportes",
     "/ajustes",
     "/admintaller",
-    "/sedes"
+    "/sedes",
+    "/proyecto"
   ];
 
   // Verifica si la ruta actual es una ruta admin
@@ -48,6 +54,12 @@ function AppWrapper() {
           <Route path="/familia-smart" element={<FamiliaSmart />} />
           <Route path="/campus" element={<Campus />} />
           <Route path="/inscripciones" element={<Inscripciones />} />
+          <Route path="/admintaller" element={<AdminTaller />} />
+          <Route path="/docentes" element={<Docentes />} />
+          <Route path="/sedes" element={<Sedes />} />
+          <Route path="/sedes/:nombre" element={<SedeDetalle />} />
+          <Route path="/proyecto/:nombre" element={<ProyectoDetalle />} />
+       
         </Routes>
       </div>
 

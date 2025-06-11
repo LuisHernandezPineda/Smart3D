@@ -1,0 +1,175 @@
+.proyecto-detalle {
+  font-family: Arial, sans-serif;
+  background-color: #f6f6f6;
+  min-height: 100vh;
+  padding: 100px 30px 30px;
+}
+
+.contenido-proyecto {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contenido-proyecto h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.info-proyecto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.info-proyecto p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.botones-proyecto {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-eliminar {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-modificar {
+  background-color: #00c897;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-eliminar:hover {
+  background-color: #d62839;
+}
+
+.btn-modificar:hover {
+  background-color: #00b386;
+}
+
+.tabla-asistencia {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.tabla-asistencia th,
+.tabla-asistencia td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.tabla-asistencia th {
+  background-color: #0066cc;
+  color: white;
+}
+
+.tabla-asistencia td.editable {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.tabla-asistencia td.editable:hover {
+  background-color: #f0f8ff;
+}
+
+/* ✅ Modal base */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn-cancelar {
+  background-color: #ccc;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-guardar {
+  background-color: #00c897;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-guardar:hover {
+  background-color: #00b386;
+}
+
+/* Botón principal para guardar cambios generales */
+.btn-guardar-principal {
+  margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #00c897;
+  color: white;
+  padding: 10px 25px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-guardar-principal:hover {
+  background-color: #00b386;
+}

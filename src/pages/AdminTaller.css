@@ -1,0 +1,337 @@
+/* === RESET GLOBAL === */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === CONTENEDOR PRINCIPAL === */
+.admin-taller-container {
+  background-color: white;
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem 4rem;
+}
+
+/* === BANNER DESENFOCADO === */
+.admin-taller-banner {
+  position: relative;
+  height: 160px;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 63px;
+}
+
+.banner-blur-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(4px);
+  transform: scale(1.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.admin-taller-banner-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo-admin-taller {
+  color: white;
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* === LISTA DE TALLERES === */
+.lista-talleres {
+  width: 100%;
+  border-radius: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.lista-talleres-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.lista-talleres-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.btn-agregar {
+  background-color: #00c36c;
+  color: white;
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.85rem;
+  height: 32px;
+  min-width: 90px;
+  max-width: 120px;
+  white-space: nowrap;
+}
+
+/* === TARJETAS DE TALLERES === */
+.taller-item {
+  background-color: #0052cc;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  gap: 1rem;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.taller-item span {
+  flex-grow: 1;
+  white-space: nowrap;
+}
+
+.btn-ver {
+  background-color: #00c36c;
+  border: none;
+  padding: 0.3rem 1.2rem;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.8rem;
+  min-width: 70px;
+  max-width: 80px;
+  text-align: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* === DETALLE DE TALLER INCRUSTADO === */
+.tarjeta-taller {
+  background-color: #eeeeee;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  margin-top: 1rem; /* Aumentado */
+  animation: fadeIn 0.4s ease-out; /* Más suave y lenta */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.tarjeta-taller h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.tarjeta-taller p {
+  margin: 0.2rem 0 1rem 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* === BOTONES DENTRO DE LA TARJETA === */
+.tarjeta-botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.btn-editar {
+  background-color: #0052cc;
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-editar:hover {
+  background-color: #003c99;
+}
+
+.btn-eliminar {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-eliminar:hover {
+  background-color: #a93226;
+}
+
+/* === MODAL === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-contenido {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.modal-contenido h2 {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.modal-contenido label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.modal-contenido input,
+.modal-contenido textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.modal-botones {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-agregar-modal {
+  background-color: #00c36c;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+}
+
+.btn-cancelar-modal {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+}
+
+.btn-cerrar {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  background: none;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* === Animación === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === MODAL EDITAR === */
+/* Ya se usa .modal-overlay y .modal-contenido existentes */
+
+.modal-contenido h2 {
+  font-size: 1.5rem;
+  color: #222;
+}
+
+/* Mejoras para inputs del modal editar */
+.modal-contenido input,
+.modal-contenido textarea {
+  background-color: #f5f5f5;
+  border: 1px solid #bbb;
+  padding: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.modal-contenido textarea {
+  resize: none;
+}
+
+/* Animación más suave al editar */
+@keyframes fadeInEditar {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-contenido {
+  animation: fadeInEditar 0.3s ease-out;
+}

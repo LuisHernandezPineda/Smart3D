@@ -45,7 +45,7 @@ const Talleres = () => {
           <div className="talleres-info">
             <h2>Robo Juniors</h2>
             <p>
-              Dirigido a niños de 3ro a 7mo de primaria, este taller les permite crear proyectos como Otto Ninja y Otto Araña, aprendiendo robótica y tecnología de forma creativa y emocionante. 🚀🤖
+              Dirigido a niños de 3ro a 7mo grado, este taller les permite crear proyectos como Otto Ninja y Otto Araña, aprendiendo robótica y tecnología de forma creativa y emocionante. 🚀🤖
             </p>
             <div className="talleres-buttons">
               <button className="btn-info" onClick={() => navigate('/robojuniors')}>Más información</button>

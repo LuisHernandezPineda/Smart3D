@@ -1,0 +1,154 @@
+.sedes-container {
+  font-family: Arial, sans-serif;
+  background-color: #f6f6f6;
+  min-height: 100vh;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 20px;
+  color: #333;
+}
+
+.sedes-lista {
+  margin-top: 30px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 30px;
+}
+
+.sedes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.btn-agregar {
+  background-color: #00c897;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-agregar:hover {
+  background-color: #00b386;
+}
+
+.sedes-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sede-item {
+  background-color: #0066cc;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.sede-item:hover {
+  background-color: #005bb5;
+}
+
+.btn-ver {
+  background-color: #00e087;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-ver:hover {
+  background-color: #00c471;
+}
+
+/* Ocupar ancho completo */
+@media (min-width: 768px) {
+  .sedes-lista {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-content h3 {
+  margin: 0;
+  text-align: center;
+  color: #333;
+}
+
+.modal-content input,
+.modal-content select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn-cancelar {
+  background-color: #ccc;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-guardar {
+  background-color: #00c897;
+  border: none;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-guardar:hover {
+  background-color: #00b386;
+}
