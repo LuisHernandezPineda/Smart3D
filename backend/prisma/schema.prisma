@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model InscripcionRoboKids {
+  id        Int      @id @default(autoincrement())
+  apellidos String
+  nombres   String
+  dni       String
+  fecha     DateTime
+  grado     String
+  telefono  String
+  pago      String
+}
+
+model InscripcionRoboJuniors {
+  id        Int      @id @default(autoincrement())
+  apellidos String
+  nombres   String
+  dni       String
+  fecha     DateTime
+  grado     String
+  telefono  String
+  pago      String
+}

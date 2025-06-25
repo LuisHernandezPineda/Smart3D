@@ -8,7 +8,7 @@ const ProyectoDetalle = () => {
   const navigate = useNavigate();
 
   const datosProyecto = {
-    docente: "Hernandez Pineda Luis",
+    docente: "Joaquin Tejada",
     horario: "Miércoles : 3:15 pm a 4:30 pm"
   };
 
