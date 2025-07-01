@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import AdminHeader from "../components/AdminHeader"; // Componente modular reutilizable
 import "./Campus.css";
 
+
 const Campus = () => {
   const navigate = useNavigate();
+  
 
   const secciones = [
     { nombre: "Inscripciones", ruta: "/inscripciones", imagen: "/img/pexels-photo-6373417.jpg" },

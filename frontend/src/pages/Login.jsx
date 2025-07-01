@@ -1,56 +1,71 @@
-import React from 'react';
-import '../pages/Login.css';
-import 'boxicons/css/boxicons.min.css';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './Login.css'; // Asegúrate de que esté el path correcto
 
 const Login = () => {
-    const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-        try {
-            const res = await axios.post('http://127.0.0.1:8000/api/login', {
-                email,
-                password,
-            });
+    try {
+      const res = await axios.post('http://localhost:3001/api/auth/login', {
+        username,
+        password,
+      });
 
-            if (res.data.success) {
-                alert('Inicio de sesión exitoso');
-                localStorage.setItem('userEmail', email);
-                form.reset();
-                navigate('/campus'); // Redirige al campus después de iniciar sesión
-            } else {
-                alert('Credenciales incorrectas');
-            }
-        } catch (err) {
-            alert('Error al iniciar sesión: ' + (err.response?.data?.message || err.message));
-        }
-    };
+      if (res.status === 200) {
+        // Puedes guardar datos en localStorage si quieres mantener sesión
+        localStorage.setItem('usuario', JSON.stringify(res.data.docente));
 
-    return (
-        <div className="container" style={{ maxWidth: "400px", margin: "60px auto" }}>
-            <div className="form-box login" style={{ width: "100%", position: "relative", right: "auto" }}>
-                <form onSubmit={handleLogin}>
-                    <h1>Inicio de sesion</h1>
-                    <div className="input-box">
-                        <input type="email" name="email" placeholder="Email" required />
-                        <i className="bx bxs-user"></i>
-                    </div>
-                    <div className="input-box">
-                        <input type="password" name="password" placeholder="Password" required />
-                        <i className="bx bxs-lock-alt"></i>
-                    </div>
-                    
-                    <button type="submit" className="btn">Iniciar</button>
-                </form>
-            </div>
+        // Redireccionar a campus
+        navigate('/campus');
+      }
+    } catch (err) {
+      setError('Usuario o contraseña incorrectos');
+    }
+  };
+
+  return (
+    <div className="container">
+      <h1>Iniciar Sesión</h1>
+      <form onSubmit={handleLogin}>
+        <div className="input-box">
+          <input
+            type="text"
+            placeholder="Correo o Usuario"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <i className="fas fa-user"></i>
         </div>
-    );
+
+        <div className="input-box">
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <i className="fas fa-lock"></i>
+        </div>
+
+        {error && <p className="error" style={{ color: 'red', fontSize: '14px' }}>{error}</p>}
+
+        <div className="forgot-link">
+          <a href="#">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button type="submit" className="btn">Ingresar</button>
+      </form>
+    </div>
+  );
 };
 
 export default Login;

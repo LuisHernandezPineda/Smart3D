@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Docentes.css";
 import AdminHeader from "../components/AdminHeader";
 
@@ -21,6 +21,22 @@ const Docentes = () => {
     confirmarPassword: ""
   });
 
+  useEffect(() => {
+    const cargarDocentes = async () => {
+      try {
+        const res = await fetch("http://localhost:3001/api/docentes");
+        if (!res.ok) throw new Error("No se pudo cargar la lista de docentes");
+        const data = await res.json();
+        setListaDocentes(data);
+      } catch (error) {
+        console.error(error);
+        alert("Error al cargar docentes");
+      }
+    };
+
+    cargarDocentes();
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setDatosDocente({ ...datosDocente, [name]: value });
@@ -29,15 +45,45 @@ const Docentes = () => {
   const siguientePaso = () => setPasoActual(pasoActual + 1);
   const pasoAnterior = () => setPasoActual(pasoActual - 1);
 
-  const registrarDocente = () => {
+  const registrarDocente = async () => {
+    const { confirmarPassword, ...docenteSinConfirmar } = datosDocente;
+
     if (editandoIndex !== null) {
-      const copia = [...listaDocentes];
-      copia[editandoIndex] = datosDocente;
-      setListaDocentes(copia);
+      const id = listaDocentes[editandoIndex].id;
+      try {
+        const res = await fetch(`http://localhost:3001/api/docentes/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(docenteSinConfirmar)
+        });
+
+        if (!res.ok) throw new Error("Error al actualizar docente");
+
+        const actualizado = await res.json();
+        const copia = [...listaDocentes];
+        copia[editandoIndex] = actualizado;
+        setListaDocentes(copia);
+      } catch (error) {
+        console.error(error);
+        alert("Error al actualizar docente");
+      }
     } else {
-      setListaDocentes([...listaDocentes, datosDocente]);
+      try {
+        const res = await fetch("http://localhost:3001/api/docentes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(docenteSinConfirmar)
+        });
+        if (!res.ok) throw new Error("Error al guardar docente");
+        const nuevo = await res.json();
+        setListaDocentes([...listaDocentes, nuevo]);
+      } catch (error) {
+        console.error(error);
+        alert("Hubo un error al guardar el docente");
+      }
     }
 
+    // Reiniciar formulario
     setDatosDocente({
       nombres: "",
       apellidos: "",
@@ -56,14 +102,27 @@ const Docentes = () => {
     setEditandoIndex(null);
   };
 
-  const eliminarDocente = (index) => {
-    const nuevos = [...listaDocentes];
-    nuevos.splice(index, 1);
-    setListaDocentes(nuevos);
+  const eliminarDocente = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:3001/api/docentes/${id}`, {
+        method: "DELETE"
+      });
+      if (!res.ok) throw new Error("Error al eliminar docente");
+      setListaDocentes(listaDocentes.filter(doc => doc.id !== id));
+    } catch (error) {
+      console.error(error);
+      alert("Error al eliminar docente");
+    }
   };
 
   const editarDocente = (index) => {
-    setDatosDocente(listaDocentes[index]);
+    const docente = listaDocentes[index];
+    setDatosDocente({
+      ...docente,
+      fechaNacimiento: docente.fechaNacimiento?.substring(0, 10),
+      fechaContrato: docente.fechaContrato?.substring(0, 10),
+      confirmarPassword: ""
+    });
     setEditandoIndex(index);
     setPasoActual(1);
     setMostrarFormulario(true);
@@ -81,29 +140,25 @@ const Docentes = () => {
       </div>
 
       <div className="admin-taller-container">
-        <div className="lista-talleres">
-          <div className="lista-talleres-header">
-            <h3>Lista de docentes</h3>
-            <button className="btn-agregar" onClick={() => {
-              setMostrarFormulario(true);
-              setDatosDocente({
-                nombres: "",
-                apellidos: "",
-                fechaNacimiento: "",
-                telefono: "",
-                direccion: "",
-                fechaContrato: "",
-                rol: "Docente",
-                username: "",
-                password: "",
-                confirmarPassword: ""
-              });
-              setEditandoIndex(null);
-              setPasoActual(1);
-            }}>
-              Agregar
-            </button>
-          </div>
+        <div className="lista-talleres-header">
+          <h3>Lista de docentes</h3>
+          <button className="btn-agregar" onClick={() => {
+            setMostrarFormulario(true);
+            setDatosDocente({
+              nombres: "",
+              apellidos: "",
+              fechaNacimiento: "",
+              telefono: "",
+              direccion: "",
+              fechaContrato: "",
+              rol: "Docente",
+              username: "",
+              password: "",
+              confirmarPassword: ""
+            });
+            setEditandoIndex(null);
+            setPasoActual(1);
+          }}>Agregar</button>
         </div>
 
         {mostrarFormulario && (
@@ -128,7 +183,7 @@ const Docentes = () => {
                 </div>
                 <div>
                   <label>Fecha de nacimiento</label>
-                  <input name="fechaNacimiento" placeholder="xx/xx/xxxx" value={datosDocente.fechaNacimiento} onChange={handleInputChange} />
+                  <input type="date" name="fechaNacimiento" value={datosDocente.fechaNacimiento} onChange={handleInputChange} />
                 </div>
                 <div>
                   <label>Teléfono</label>
@@ -145,7 +200,7 @@ const Docentes = () => {
               <div className="grid-form">
                 <div>
                   <label>Fecha de contrato</label>
-                  <input name="fechaContrato" placeholder="xx/xx/xxxx" value={datosDocente.fechaContrato} onChange={handleInputChange} />
+                  <input type="date" name="fechaContrato" value={datosDocente.fechaContrato} onChange={handleInputChange} />
                 </div>
                 <div>
                   <label>Rol</label>
@@ -189,7 +244,7 @@ const Docentes = () => {
                 </div>
                 <div className="docente-actions">
                   <button className="btn-editar" onClick={() => editarDocente(i)}>Editar</button>
-                  <button className="btn-eliminar" onClick={() => eliminarDocente(i)}>Eliminar</button>
+                  <button className="btn-eliminar" onClick={() => eliminarDocente(doc.id)}>Eliminar</button>
                 </div>
               </div>
             ))}

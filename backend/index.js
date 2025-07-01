@@ -1,5 +1,3 @@
-// index.js
-
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
@@ -7,7 +5,6 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middlewares
 app.use(cors());
 app.use(express.json());
 
@@ -15,12 +12,24 @@ app.use(express.json());
 const inscripcionesRoutes = require('./routes/inscripciones');
 app.use('/api/inscripciones', inscripcionesRoutes);
 
-// Ruta raíz para comprobar que el servidor está funcionando
+const docentesRoutes = require('./routes/docentes');
+app.use('/api/docentes', docentesRoutes);
+
+const talleresRoutes = require('./routes/talleres');
+app.use('/api/talleres', talleresRoutes);
+
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
+
+const sedeRoutes = require('./routes/sedes');
+app.use('/api/sedes', sedeRoutes);
+
+
+// Ruta de prueba
 app.get('/', (req, res) => {
   res.send('✅ Backend funcionando correctamente');
 });
 
-// Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`🟢 Servidor escuchando en http://localhost:${PORT}`);
 });

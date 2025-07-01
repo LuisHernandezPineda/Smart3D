@@ -28,3 +28,39 @@ model InscripcionRoboJuniors {
   telefono  String
   pago      String
 }
+
+model Docente {
+  id               Int      @id @default(autoincrement())
+  nombres          String
+  apellidos        String
+  fechaNacimiento  DateTime
+  telefono         String
+  direccion        String
+  fechaContrato    DateTime
+  rol              String
+  username         String @unique
+  password         String
+  creadoEn         DateTime @default(now())
+}
+
+model Taller {
+  id          Int      @id @default(autoincrement())
+  nombre      String
+  informacion String
+  creadoEn    DateTime @default(now())
+}
+
+model Usuario {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+}
+
+model Sede {
+  id        Int      @id @default(autoincrement())
+  nombre    String
+  direccion String
+  distrito  String
+  estado    String
+  creadoEn  DateTime @default(now())
+}

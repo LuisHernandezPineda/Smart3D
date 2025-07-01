@@ -32,13 +32,18 @@
   color: white;
   border: none;
   border-radius: 20px;
-  padding: 10px 18px;
-  font-weight: bold;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 14px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s;
 }
 
 .btn-agregar:hover {
-  background-color: #00b386;
+  background-color: #00a77f;
 }
 
 .sedes-items {
@@ -63,26 +68,54 @@
   background-color: #005bb5;
 }
 
-.btn-ver {
-  background-color: #00e087;
+.sede-item div {
+  display: flex;
+  gap: 10px;
+}
+
+/* Botones de acción */
+.btn-ver,
+.btn-editar,
+.btn-eliminar {
   border: none;
-  color: white;
   padding: 8px 16px;
   border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
-  font-weight: bold;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 110px;
+  justify-content: center;
 }
 
+/* Botón VER */
+.btn-ver {
+  background-color: #00c897;
+  color: white;
+}
 .btn-ver:hover {
-  background-color: #00c471;
+  background-color: #00a77f;
 }
 
-/* Ocupar ancho completo */
-@media (min-width: 768px) {
-  .sedes-lista {
-    width: 100%;
-    max-width: none;
-  }
+/* Botón EDITAR */
+.btn-editar {
+  background-color: #f5a623;
+  color: white;
+}
+.btn-editar:hover {
+  background-color: #e39614;
+}
+
+/* Botón ELIMINAR */
+.btn-eliminar {
+  background-color: #eb5757;
+  color: white;
+}
+.btn-eliminar:hover {
+  background-color: #d64040;
 }
 
 /* Modal */
@@ -124,31 +157,52 @@
   font-size: 14px;
 }
 
+/* Botones del modal */
 .modal-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: flex-end;
   gap: 10px;
+  margin-top: 18px;
 }
 
+.modal-buttons button {
+  flex: 1;
+  height: 48px;
+  border: none;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 20px;
+  min-width: 130px;
+}
+
+/* Botón Cancelar */
 .btn-cancelar {
   background-color: #ccc;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
+  color: #333;
+}
+.btn-cancelar:hover {
+  background-color: #b3b3b3;
 }
 
+/* Botón Guardar */
 .btn-guardar {
   background-color: #00c897;
-  border: none;
-  padding: 10px 15px;
   color: white;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
+}
+.btn-guardar:hover {
+  background-color: #00a77f;
 }
 
-.btn-guardar:hover {
-  background-color: #00b386;
+/* Responsive */
+@media (min-width: 768px) {
+  .sedes-lista {
+    width: 100%;
+    max-width: none;
+  }
 }

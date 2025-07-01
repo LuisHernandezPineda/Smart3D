@@ -29,7 +29,7 @@ const AdminHeader = () => {
     };
   }, []);
 
-  const usuario = localStorage.getItem("usuario") || "Admin";
+  const usuario = JSON.parse(localStorage.getItem("usuario")) || { username: "Admin", rol: "Sin rol" };
 
   return (
     <div className="admin-header">
@@ -39,7 +39,10 @@ const AdminHeader = () => {
       </div>
 
       <div className="admin-header-menu" ref={menuRef}>
-        <span className="admin-name">{usuario}</span>
+        <div style={{ display: "flex", flexDirection: "column", textAlign: "right" }}>
+          <span style={{ fontSize: "0.9rem", fontWeight: "bold" }}>{usuario.username}</span>
+          <span style={{ fontSize: "0.8rem", fontStyle: "italic" }}>{usuario.rol}</span>
+        </div>
         <button className="admin-toggle" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
         {menuOpen && (
           <div className="admin-dropdown">
