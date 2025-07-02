@@ -5,6 +5,7 @@ import axios from "axios";
 
 const Inscripciones = () => {
   const [tallerActivo, setTallerActivo] = useState("kids");
+
   const [formData, setFormData] = useState({
     nombre: "",
     apellido: "",
@@ -13,34 +14,46 @@ const Inscripciones = () => {
     grado: "",
     telefono: "",
     pago: "Pendiente",
+    sede: "",
+  });
+
+  const [filtros, setFiltros] = useState({
+    nombre: "",
+    apellido: "",
+    dni: "",
+    grado: "",
+    telefono: "",
+    pago: "",
+    sede: "",
   });
 
   const [registros, setRegistros] = useState([]);
 
-  const handleChange = (e) => {
+  const endpointBase = (tipo) =>
+    `http://localhost:3001/api/inscripciones/${tipo === "kids" ? "robokids" : "robojuniors"}`;
+
+  // ✅ Handler para inputs del formulario de registro
+  const handleChangeForm = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // ✅ Handler para filtros de búsqueda
+  const handleChangeFiltro = (e) => {
+    const { name, value } = e.target;
+    setFiltros((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleRegistrar = async () => {
-    if (!formData.nombre || !formData.apellido || !formData.dni) return;
+    if (!formData.nombre || !formData.apellido || !formData.dni || !formData.sede) return;
 
-    const endpoint =
-      tallerActivo === "kids"
-        ? "http://localhost:3001/api/inscripciones/robokids"
-        : "http://localhost:3001/api/inscripciones/robojuniors";
-
-    // Validar y convertir la fecha antes de enviar
-    const fechaValida = formData.fecha
-      ? new Date(formData.fecha).toISOString()
-      : null;
+    const endpoint = endpointBase(tallerActivo);
+    const fechaValida = formData.fecha ? new Date(formData.fecha).toISOString() : null;
 
     try {
-      const response = await fetch(endpoint, {
+      await fetch(endpoint, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           nombres: formData.nombre,
           apellidos: formData.apellido,
@@ -49,23 +62,9 @@ const Inscripciones = () => {
           grado: formData.grado,
           telefono: formData.telefono,
           pago: formData.pago,
+          sede: formData.sede,
         }),
       });
-
-      const nuevoRegistro = await response.json();
-
-      const fechaFormateada = nuevoRegistro.fecha
-        ? new Date(nuevoRegistro.fecha).toLocaleDateString("es-PE")
-        : "";
-
-      setRegistros([
-        ...registros,
-        {
-          ...nuevoRegistro,
-          fecha: fechaFormateada,
-          taller: tallerActivo === "kids" ? "Kids" : "Juniors",
-        },
-      ]);
 
       setFormData({
         nombre: "",
@@ -75,7 +74,10 @@ const Inscripciones = () => {
         grado: "",
         telefono: "",
         pago: "Pendiente",
+        sede: "",
       });
+
+      cargarRegistros();
     } catch (error) {
       console.error("Error al registrar:", error);
     }
@@ -83,17 +85,21 @@ const Inscripciones = () => {
 
   const cargarRegistros = async () => {
     try {
-      const endpoint =
-        tallerActivo === "kids"
-          ? "http://localhost:3001/api/inscripciones/robokids"
-          : "http://localhost:3001/api/inscripciones/robojuniors";
+      const endpoint = endpointBase(tallerActivo);
+      const queryParams = new URLSearchParams({
+        nombres: filtros.nombre,
+        apellidos: filtros.apellido,
+        dni: filtros.dni,
+        grado: filtros.grado,
+        telefono: filtros.telefono,
+        pago: filtros.pago,
+        sede: filtros.sede,
+      });
 
-      const response = await axios.get(endpoint);
+      const response = await axios.get(`${endpoint}?${queryParams.toString()}`);
       const registrosConTaller = response.data.map((reg) => ({
         ...reg,
-        fecha: reg.fecha
-          ? new Date(reg.fecha).toLocaleDateString("es-PE")
-          : "",
+        fecha: reg.fecha ? new Date(reg.fecha).toLocaleDateString("es-PE") : "",
         taller: tallerActivo === "kids" ? "Kids" : "Juniors",
       }));
       setRegistros(registrosConTaller);
@@ -102,9 +108,19 @@ const Inscripciones = () => {
     }
   };
 
+  const marcarComoPagado = async (id) => {
+    try {
+      const endpoint = `${endpointBase(tallerActivo)}/${id}`;
+      await axios.patch(endpoint, { pago: "Pagado" });
+      cargarRegistros();
+    } catch (err) {
+      console.error("Error al actualizar pago:", err);
+    }
+  };
+
   useEffect(() => {
     cargarRegistros();
-  }, [tallerActivo]);
+  }, [tallerActivo, filtros]);
 
   return (
     <div className="inscripciones-container">
@@ -131,52 +147,48 @@ const Inscripciones = () => {
         </button>
       </div>
 
+      {/* 📌 FORMULARIO DE REGISTRO */}
       <div className="filtros">
-        <input
-          name="apellido"
-          value={formData.apellido}
-          onChange={handleChange}
-          placeholder="Apellidos"
-        />
-        <input
-          name="nombre"
-          value={formData.nombre}
-          onChange={handleChange}
-          placeholder="Nombres"
-        />
-        <input
-          name="fecha"
-          value={formData.fecha}
-          onChange={handleChange}
-          type="date"
-        />
-        <input
-          name="dni"
-          value={formData.dni}
-          onChange={handleChange}
-          placeholder="DNI"
-        />
-        <input
-          name="grado"
-          value={formData.grado}
-          onChange={handleChange}
-          placeholder="Grado"
-        />
-        <input
-          name="telefono"
-          value={formData.telefono}
-          onChange={handleChange}
-          placeholder="Teléfono"
-        />
-        <select name="pago" value={formData.pago} onChange={handleChange}>
+        <input name="apellido" value={formData.apellido} onChange={handleChangeForm} placeholder="Apellidos" />
+        <input name="nombre" value={formData.nombre} onChange={handleChangeForm} placeholder="Nombres" />
+        <input name="fecha" type="date" value={formData.fecha} onChange={handleChangeForm} />
+        <input name="dni" value={formData.dni} onChange={handleChangeForm} placeholder="DNI" />
+        <input name="grado" value={formData.grado} onChange={handleChangeForm} placeholder="Grado" />
+        <input name="telefono" value={formData.telefono} onChange={handleChangeForm} placeholder="Teléfono" />
+        <select name="pago" value={formData.pago} onChange={handleChangeForm}>
           <option value="Pendiente">Pendiente</option>
           <option value="Pagado">Pagado</option>
         </select>
-        <button className="btn-registrar" onClick={handleRegistrar}>
-          Registrar
-        </button>
+        <select name="sede" value={formData.sede} onChange={handleChangeForm}>
+          <option value="">Seleccionar sede</option>
+          <option value="Trujillo">Trujillo</option>
+          <option value="Víctor Larco">Víctor Larco</option>
+          <option value="El Porvenir">El Porvenir</option>
+        </select>
+        <button className="btn-registrar" onClick={handleRegistrar}>Registrar</button>
       </div>
 
+      {/* 📌 FILTROS DE BÚSQUEDA */}
+      <div className="filtros">
+        <input name="apellido" value={filtros.apellido} onChange={handleChangeFiltro} placeholder="Filtrar Apellidos" />
+        <input name="nombre" value={filtros.nombre} onChange={handleChangeFiltro} placeholder="Filtrar Nombres" />
+        <input name="dni" value={filtros.dni} onChange={handleChangeFiltro} placeholder="Filtrar DNI" />
+        <input name="grado" value={filtros.grado} onChange={handleChangeFiltro} placeholder="Filtrar Grado" />
+        <input name="telefono" value={filtros.telefono} onChange={handleChangeFiltro} placeholder="Filtrar Teléfono" />
+        <select name="pago" value={filtros.pago} onChange={handleChangeFiltro}>
+          <option value="">Todos</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="Pagado">Pagado</option>
+        </select>
+        <select name="sede" value={filtros.sede} onChange={handleChangeFiltro}>
+          <option value="">Todas las sedes</option>
+          <option value="Trujillo">Trujillo</option>
+          <option value="Víctor Larco">Víctor Larco</option>
+          <option value="El Porvenir">El Porvenir</option>
+        </select>
+      </div>
+
+      {/* 📌 TABLA DE INSCRIPCIONES */}
       <table className="tabla-inscripciones">
         <thead>
           <tr>
@@ -186,8 +198,10 @@ const Inscripciones = () => {
             <th>DNI</th>
             <th>Grado</th>
             <th>Teléfono</th>
+            <th>Sede</th>
             <th>Taller</th>
             <th>Pago</th>
+            <th>Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -199,8 +213,16 @@ const Inscripciones = () => {
               <td>{reg.dni}</td>
               <td>{reg.grado}</td>
               <td>{reg.telefono}</td>
+              <td>{reg.sede}</td>
               <td>{reg.taller}</td>
               <td>{reg.pago}</td>
+              <td>
+                {reg.pago === "Pendiente" ? (
+                  <button onClick={() => marcarComoPagado(reg.id)}>✔ Marcar</button>
+                ) : (
+                  "✔"
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

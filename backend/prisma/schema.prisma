@@ -16,6 +16,7 @@ model InscripcionRoboKids {
   grado     String
   telefono  String
   pago      String
+  sede      String
 }
 
 model InscripcionRoboJuniors {
@@ -27,6 +28,7 @@ model InscripcionRoboJuniors {
   grado     String
   telefono  String
   pago      String
+  sede      String 
 }
 
 model Docente {
