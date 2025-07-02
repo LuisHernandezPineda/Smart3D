@@ -24,7 +24,7 @@ const Docentes = () => {
   useEffect(() => {
     const cargarDocentes = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/docentes");
+        const res = await fetch(`${API_URL}/api/docentes`);
         if (!res.ok) throw new Error("No se pudo cargar la lista de docentes");
         const data = await res.json();
         setListaDocentes(data);
