@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'; // Asegúrate de que esté el path correcto
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -13,16 +15,13 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:3001/api/auth/login', {
+      const res = await axios.post(`${API_URL}/api/auth/login`, {
         username,
         password,
       });
 
       if (res.status === 200) {
-        // Puedes guardar datos en localStorage si quieres mantener sesión
         localStorage.setItem('usuario', JSON.stringify(res.data.docente));
-
-        // Redireccionar a campus
         navigate('/campus');
       }
     } catch (err) {
