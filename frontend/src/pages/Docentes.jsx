@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Docentes.css";
 import AdminHeader from "../components/AdminHeader";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Docentes = () => {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [pasoActual, setPasoActual] = useState(1);
