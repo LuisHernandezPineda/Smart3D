@@ -6,7 +6,6 @@ import { FaEye, FaEdit, FaTrashAlt, FaPlus, FaTimes, FaSave } from "react-icons/
 
 const Sedes = () => {
   const navigate = useNavigate();
-
   const [sedes, setSedes] = useState([]);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [editandoId, setEditandoId] = useState(null);
@@ -17,10 +16,13 @@ const Sedes = () => {
     estado: "Activo"
   });
 
+  const API_URL = "http://localhost:3001/api/sedes";
+
+  // Obtener lista de sedes al cargar componente
   useEffect(() => {
     const cargarSedes = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/sedes");
+        const res = await fetch(API_URL);
         const data = await res.json();
         setSedes(data);
       } catch (error) {
@@ -41,9 +43,7 @@ const Sedes = () => {
     }
 
     try {
-      const url = editandoId
-        ? `http://localhost:3001/api/sedes/${editandoId}`
-        : "http://localhost:3001/api/sedes";
+      const url = editandoId ? `${API_URL}/${editandoId}` : API_URL;
       const metodo = editandoId ? "PUT" : "POST";
 
       const res = await fetch(url, {
@@ -62,9 +62,7 @@ const Sedes = () => {
         setSedes([result, ...sedes]);
       }
 
-      setNuevaSede({ nombre: "", direccion: "", distrito: "", estado: "Activo" });
-      setMostrarModal(false);
-      setEditandoId(null);
+      cerrarModal();
     } catch (error) {
       console.error("Error al guardar sede:", error);
       alert("Hubo un error al guardar la sede.");
@@ -81,16 +79,22 @@ const Sedes = () => {
     if (!window.confirm("¿Estás seguro de eliminar esta sede?")) return;
 
     try {
-      const res = await fetch(`http://localhost:3001/api/sedes/${id}`, {
+      const res = await fetch(`${API_URL}/${id}`, {
         method: "DELETE"
       });
-      if (!res.ok) throw new Error("Error al eliminar sede");
 
+      if (!res.ok) throw new Error("Error al eliminar sede");
       setSedes(sedes.filter(s => s.id !== id));
     } catch (error) {
       console.error("Error al eliminar sede:", error);
       alert("Hubo un error al eliminar la sede.");
     }
+  };
+
+  const cerrarModal = () => {
+    setMostrarModal(false);
+    setEditandoId(null);
+    setNuevaSede({ nombre: "", direccion: "", distrito: "", estado: "Activo" });
   };
 
   return (
@@ -142,10 +146,7 @@ const Sedes = () => {
               <option value="Inactivo">Inactivo</option>
             </select>
             <div className="modal-buttons">
-              <button className="btn-cancelar" onClick={() => {
-                setMostrarModal(false);
-                setEditandoId(null);
-              }}>
+              <button className="btn-cancelar" onClick={cerrarModal}>
                 <FaTimes size={12} /> Cancelar
               </button>
               <button className="btn-guardar" onClick={handleGuardar}>
