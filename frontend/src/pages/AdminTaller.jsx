@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./AdminTaller.css";
 import AdminHeader from "../components/AdminHeader";
 
+const API_URL = import.meta.env.VITE_API_URL + "/api/talleres";
+console.log("🌐 API_URL Talleres:", API_URL);
+
 const AdminTaller = () => {
   const [talleres, setTalleres] = useState([]);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [mostrarEditar, setMostrarEditar] = useState(false);
   const [nuevoTaller, setNuevoTaller] = useState({ nombre: "", informacion: "" });
   const [tallerSeleccionado, setTallerSeleccionado] = useState(null);
-
-  const API_URL = "http://localhost:3001/api/talleres";
 
   useEffect(() => {
     obtenerTalleres();
