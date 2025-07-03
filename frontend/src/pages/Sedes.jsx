@@ -4,7 +4,8 @@ import "./Sedes.css";
 import AdminHeader from "../components/AdminHeader";
 import { FaEye, FaEdit, FaTrashAlt, FaPlus, FaTimes, FaSave } from "react-icons/fa";
 
-const API_URL = process.env.REACT_APP_API_URL;
+// ✅ Variable de entorno para Vite
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Sedes = () => {
   const navigate = useNavigate();
