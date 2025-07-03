@@ -3,6 +3,9 @@ import "./Inscripciones.css";
 import AdminHeader from "../components/AdminHeader";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+console.log("🌐 API_URL Inscripciones:", API_URL);
+
 const Inscripciones = () => {
   const [tallerActivo, setTallerActivo] = useState("kids");
 
@@ -30,15 +33,13 @@ const Inscripciones = () => {
   const [registros, setRegistros] = useState([]);
 
   const endpointBase = (tipo) =>
-    `http://localhost:3001/api/inscripciones/${tipo === "kids" ? "robokids" : "robojuniors"}`;
+    `${API_URL}/api/inscripciones/${tipo === "kids" ? "robokids" : "robojuniors"}`;
 
-  // ✅ Handler para inputs del formulario de registro
   const handleChangeForm = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // ✅ Handler para filtros de búsqueda
   const handleChangeFiltro = (e) => {
     const { name, value } = e.target;
     setFiltros((prev) => ({ ...prev, [name]: value }));
