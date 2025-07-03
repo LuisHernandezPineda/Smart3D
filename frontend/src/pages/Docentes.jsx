@@ -3,6 +3,7 @@ import "./Docentes.css";
 import AdminHeader from "../components/AdminHeader";
 
 const API_URL = process.env.REACT_APP_API_URL;
+console.log("🌐 API_URL actual:", API_URL);
 
 const Docentes = () => {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
@@ -53,7 +54,7 @@ const Docentes = () => {
     if (editandoIndex !== null) {
       const id = listaDocentes[editandoIndex].id;
       try {
-        const res = await fetch(`http://localhost:3001/api/docentes/${id}`, {
+        const res = await fetch(`${API_URL}/api/docentes/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(docenteSinConfirmar)
@@ -71,7 +72,7 @@ const Docentes = () => {
       }
     } else {
       try {
-        const res = await fetch("http://localhost:3001/api/docentes", {
+        const res = await fetch(`${API_URL}/api/docentes`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(docenteSinConfirmar)
@@ -85,7 +86,6 @@ const Docentes = () => {
       }
     }
 
-    // Reiniciar formulario
     setDatosDocente({
       nombres: "",
       apellidos: "",
@@ -106,7 +106,7 @@ const Docentes = () => {
 
   const eliminarDocente = async (id) => {
     try {
-      const res = await fetch(`http://localhost:3001/api/docentes/${id}`, {
+      const res = await fetch(`${API_URL}/api/docentes/${id}`, {
         method: "DELETE"
       });
       if (!res.ok) throw new Error("Error al eliminar docente");
@@ -175,56 +175,26 @@ const Docentes = () => {
 
             {pasoActual === 1 && (
               <div className="grid-form">
-                <div>
-                  <label>Nombres</label>
-                  <input name="nombres" value={datosDocente.nombres} onChange={handleInputChange} />
-                </div>
-                <div>
-                  <label>Apellidos</label>
-                  <input name="apellidos" value={datosDocente.apellidos} onChange={handleInputChange} />
-                </div>
-                <div>
-                  <label>Fecha de nacimiento</label>
-                  <input type="date" name="fechaNacimiento" value={datosDocente.fechaNacimiento} onChange={handleInputChange} />
-                </div>
-                <div>
-                  <label>Teléfono</label>
-                  <input name="telefono" value={datosDocente.telefono} onChange={handleInputChange} />
-                </div>
-                <div className="full-width">
-                  <label>Dirección</label>
-                  <input name="direccion" value={datosDocente.direccion} onChange={handleInputChange} />
-                </div>
+                <div><label>Nombres</label><input name="nombres" value={datosDocente.nombres} onChange={handleInputChange} /></div>
+                <div><label>Apellidos</label><input name="apellidos" value={datosDocente.apellidos} onChange={handleInputChange} /></div>
+                <div><label>Fecha de nacimiento</label><input type="date" name="fechaNacimiento" value={datosDocente.fechaNacimiento} onChange={handleInputChange} /></div>
+                <div><label>Teléfono</label><input name="telefono" value={datosDocente.telefono} onChange={handleInputChange} /></div>
+                <div className="full-width"><label>Dirección</label><input name="direccion" value={datosDocente.direccion} onChange={handleInputChange} /></div>
               </div>
             )}
 
             {pasoActual === 2 && (
               <div className="grid-form">
-                <div>
-                  <label>Fecha de contrato</label>
-                  <input type="date" name="fechaContrato" value={datosDocente.fechaContrato} onChange={handleInputChange} />
-                </div>
-                <div>
-                  <label>Rol</label>
-                  <input name="rol" value={datosDocente.rol} onChange={handleInputChange} />
-                </div>
+                <div><label>Fecha de contrato</label><input type="date" name="fechaContrato" value={datosDocente.fechaContrato} onChange={handleInputChange} /></div>
+                <div><label>Rol</label><input name="rol" value={datosDocente.rol} onChange={handleInputChange} /></div>
               </div>
             )}
 
             {pasoActual === 3 && (
               <div className="grid-form">
-                <div>
-                  <label>Username</label>
-                  <input name="username" value={datosDocente.username} onChange={handleInputChange} />
-                </div>
-                <div>
-                  <label>Contraseña</label>
-                  <input type="password" name="password" value={datosDocente.password} onChange={handleInputChange} />
-                </div>
-                <div>
-                  <label>Confirmar Contraseña</label>
-                  <input type="password" name="confirmarPassword" value={datosDocente.confirmarPassword} onChange={handleInputChange} />
-                </div>
+                <div><label>Username</label><input name="username" value={datosDocente.username} onChange={handleInputChange} /></div>
+                <div><label>Contraseña</label><input type="password" name="password" value={datosDocente.password} onChange={handleInputChange} /></div>
+                <div><label>Confirmar Contraseña</label><input type="password" name="confirmarPassword" value={datosDocente.confirmarPassword} onChange={handleInputChange} /></div>
               </div>
             )}
 
