@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Docentes.css";
 import AdminHeader from "../components/AdminHeader";
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 console.log("🌐 API_URL actual:", API_URL);
 
 const Docentes = () => {

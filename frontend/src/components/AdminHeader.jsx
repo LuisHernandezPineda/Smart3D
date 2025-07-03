@@ -7,8 +7,19 @@ const AdminHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const handleEditar = () => {
     alert("Redirigiendo a edición de perfil...");
+    // navigate("/editar-perfil"); // si ya tienes la ruta
   };
 
   const handleCerrarSesion = () => {
@@ -16,34 +27,27 @@ const AdminHeader = () => {
     navigate("/login");
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   const usuario = JSON.parse(localStorage.getItem("usuario")) || { username: "Admin", rol: "Sin rol" };
 
   return (
-    <div className="admin-header">
+    <header className="admin-header">
       <div className="admin-header-logo">
         <img src="/img/logo.jpg" alt="logo" />
         <h2>Familia Smart</h2>
       </div>
 
-      <div className="admin-header-menu" ref={menuRef}>
-        <div style={{ display: "flex", flexDirection: "column", textAlign: "right" }}>
-          <span style={{ fontSize: "0.9rem", fontWeight: "bold" }}>{usuario.username}</span>
-          <span style={{ fontSize: "0.8rem", fontStyle: "italic" }}>{usuario.rol}</span>
+      <div className="admin-header-user" ref={menuRef}>
+        <div className="admin-user-info">
+          <span className="admin-user-name">{usuario.username}</span>
+          <span className="admin-user-role">{usuario.rol}</span>
         </div>
-        <button className="admin-toggle" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+        <button
+          className="admin-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Menú de usuario"
+        >
+          ☰
+        </button>
         {menuOpen && (
           <div className="admin-dropdown">
             <button onClick={handleEditar}>Editar perfil</button>
@@ -51,7 +55,7 @@ const AdminHeader = () => {
           </div>
         )}
       </div>
-    </div>
+    </header>
   );
 };
 
